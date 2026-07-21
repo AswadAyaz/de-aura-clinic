@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-surface text-ink font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+  }
+  ::selection {
+    background-color: #C9A85E;
+    color: #14050A;
+  }
+  :focus-visible {
+    outline: 3px solid #5C1A33;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs sm:text-sm font-utility font-semibold tracking-[0.18em] uppercase text-primary-600;
+  }
+
+  .section-heading {
+    @apply font-display font-bold text-3xl sm:text-4xl lg:text-[2.75rem] leading-tight text-ink;
+  }
+
+  .section-sub {
+    @apply font-body text-base sm:text-lg text-ink/65 leading-relaxed max-w-2xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-utility font-semibold text-white shadow-glow transition-all duration-300 hover:bg-primary-600 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary/20 bg-white px-7 py-3.5 font-utility font-semibold text-primary transition-all duration-300 hover:border-primary hover:bg-primary-50 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 font-utility font-semibold text-white shadow-lift transition-all duration-300 hover:bg-accent-600 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .card-surface {
+    @apply bg-card rounded-xl3 shadow-card border border-primary-900/[0.04];
+  }
+
+  .glass-panel {
+    @apply bg-white/60 backdrop-blur-xl border border-white/50;
+  }
+
+  .reveal {
+    opacity: 0;
+  }
+  .reveal.in-view {
+    animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; }
+}
+
+/* Custom slim scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #C9A85E, #5C1A33);
+  border-radius: 999px;
+}
